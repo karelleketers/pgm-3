@@ -37,13 +37,17 @@ const app = {
     });
     // verwijder een student door erop te klikken
     this.$studentsWrapper.addEventListener("click", (e) => {
-      // target should be the article, get the id from attribute data-id
+      // do nothing if one simply clicks the main tag
+      if (e.target.className != "delete") return false;
+
+      // target should be the button, get the id from attribute data-id
       const id = e.target.dataset.id;
 
       // 1. remove from api
       this.deleteStudentFromAPI(id);
       // 2. remove from DOM
-      e.target.remove();
+      const parentCard = e.target.closest("article");
+      parentCard.remove();
     });
   },
   async deleteStudentFromAPI(_id) {
@@ -95,10 +99,9 @@ const app = {
       const studentCard = document.createElement("article");
       studentCard.style.backgroundImage = `url('${student.avatar}')`;
       studentCard.className = "student";
-      studentCard.setAttribute("data-id", student._id);
       // set content of card
       studentCard.innerHTML = `
-        <h2 class="student__name">
+            <h2 class="student__name">
             ${student.firstname} ${student.lastname}
             <br>${student.classname}</h2>
             <div class="student__info">
@@ -109,6 +112,7 @@ const app = {
               <p>Contacteer me via 
                   <a href="mailto:${student.email}">${student.email}</a> 
               </p>
+              <button class="delete" data-id="${student._id}">Verwijder</button>
           </div>
         `;
 

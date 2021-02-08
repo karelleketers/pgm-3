@@ -14,6 +14,7 @@
 body {
   font-family: "Barlow Condensed", sans-serif;
   font-size: 18px;
+  color: var(--color-white);
 }
 
 p {
@@ -22,6 +23,10 @@ p {
 
 a {
   color: var(--color-white);
+}
+
+button {
+  cursor: pointer;
 }
 
 .hero {
@@ -47,6 +52,12 @@ h1 {
   opacity: 0;
   display: flex;
   align-items: flex-end;
+}
+
+h2,
+h3,
+h4 {
+  margin-bottom: 1rem;
 }
 
 .hero__dots {
@@ -155,6 +166,7 @@ h1 {
 
 .student:hover .student__info {
   opacity: 1;
+  pointer-events: initial;
 }
 
 .student__info h3 {
@@ -169,12 +181,43 @@ footer {
 }
 
 button {
-  margin-top: 20px;
+  margin: 20px 0;
   border: 1px solid white;
-  padding: 10px 20px;
+  padding: 5px 10px;
   font-family: "Barlow Condensed", sans-serif;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 20px;
   color: white;
   background: var(--color-purple);
+}
+
+button:hover {
+  background-color: var(--color-white);
+  color: var(--color-purple);
+}
+
+.addMore {
+  padding: 2rem 0;
+  background: var(--color-purple);
+  text-align: center;
+}
+
+.addMore form {
+  max-width: 600px;
+  margin: 0 auto;
+  border: 1px dotted var(--color-white);
+  padding: 1rem 1rem 0 1rem;
+}
+
+input,
+textarea,
+select {
+  padding: 5px 10px;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border: 1px solid var(--color-white);
+  width: 100%;
+  font-size: 18px;
+  font-family: "Barlow Condensed", sans-serif;
+  margin-bottom: 0.7rem;
 }
