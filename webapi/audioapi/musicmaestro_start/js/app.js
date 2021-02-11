@@ -14,8 +14,9 @@ const app = {
     this.registerListeners();
   },
 
-  async bufferSong() {},
+  bufferSong() {},
   cacheElements() {
+    this.$audioEl = document.querySelector("audio");
     this.$songselector = document.querySelector("#songselector");
     this.$playBtn = document.querySelector("#play");
     this.$stopBtn = document.querySelector("#stop");
@@ -53,12 +54,12 @@ const app = {
   playMusic() {
     this.$playBtn.disabled = true;
     this.$stopBtn.disabled = false;
+
+    this.bufferSong();
   },
   stopMusic() {
     this.$stopBtn.disabled = true;
     this.$playBtn.disabled = false;
-    try {
-    } catch (error) {}
   },
 };
 
