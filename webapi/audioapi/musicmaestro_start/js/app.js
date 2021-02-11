@@ -1,6 +1,10 @@
 const AudioContext = window.AudioContext || window.webkitAudioContext;
 const audioContext = new AudioContext();
+
 let source;
+
+let audio = null;
+let audioSource = null;
 
 // const gainNode = audioContext.createGain();
 // const panNode = audioContext.createStereoPanner();
