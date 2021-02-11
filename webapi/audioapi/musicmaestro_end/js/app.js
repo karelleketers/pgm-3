@@ -15,11 +15,10 @@ let audio = null;
 let audioSource = null;
 
 const gainNode = audioContext.createGain();
-
-// const panNode = audioContext.createStereoPanner();
-// const filterNode = audioContext.createBiquadFilter();
-// filterNode.type = filterNode.LOWPASS;
-// filterNode.frequency.value = 3000;
+const panNode = audioContext.createStereoPanner();
+const filterNode = audioContext.createBiquadFilter();
+filterNode.type = filterNode.LOWPASS;
+filterNode.frequency.value = 3000;
 
 const app = {
   init() {
@@ -35,6 +34,8 @@ const app = {
     audioSource = audioContext.createMediaElementSource(audio);
     audioSource // bron
       .connect(gainNode) // modificatie 1: volume
+      .connect(panNode) // modificatie 2: panning
+      .connect(filterNode)
       .connect(audioContext.destination); // eindbestemming
   },
   cacheElements() {
@@ -68,10 +69,17 @@ const app = {
 
     this.$panInp.addEventListener("input", function () {
       // change pan
+      // @students: todo make the panning work!...
+      panNode.pan.value = this.value;
     });
 
     this.$filterInp.addEventListener("input", function () {
       // change filter
+      var minValue = 40;
+      var maxValue = audioContext.sampleRate / 2;
+      var numberOfOctaves = Math.log(maxValue / minValue) / Math.LN2;
+      var multiplier = Math.pow(2, numberOfOctaves * (this.value - 1.0));
+      filterNode.frequency.value = maxValue * multiplier;
     });
   },
   playMusic() {
