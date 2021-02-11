@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Music Maestro</title>
+    <style>
+      body {
+        background-color: rgb(173, 163, 179);
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+      div {
+        margin-bottom: 1rem;
+      }
+      label {
+        display: block;
+        font-weight: 800;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Music Maestro</h1>
+
+    <div>
+      <label for="songselector">Kies je favoriete nummer</label>
+      <select id="songselector">
+        <option value="jaydee">Jaydee - Plastic Dreams</option>
+        <option value="tarkan">Tarkan - Simarik</option>
+        <option value="the-hu">The Hu - Wolf Totem</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="volume">Volume</label>
+      0 <input type="range" name="volume" id="volume" min="0" max="2" step="0.01" /> 200%
+    </div>
+    <div>
+      <label for="pan">Panning</label>
+      links <input type="range" name="pan" id="pan" min="-1" max="1" step="0.01" /> rechts
+    </div>
+    <div>
+      <label for="filter">Filter</label>
+      -- <input type="range" name="filter" id="filter" min="0" max="1" value="1" step="0.01" /> ++
+    </div>
+    <div>
+      <button id="play">Play</button>
+      <button id="stop" disabled>Stop</button>
+    </div>
+  </body>
+  <script src="./js/app.js" type="module"></script>
+</html>
